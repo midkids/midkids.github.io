@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Greenfield CoderDojo :: Survey</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="final.css" type="text/css">
+		<script>
+			
+			function optionalQuestion()
+				{
+					var selectBox = document.getElementById("selectBox");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					if (selectedValue == "some" )
+						{
+							collection = document.getElementsByClassName("hiddenArcade")
+							for (let i = 0; i < collection.length; i++)
+								{
+									collection[i].style.visibility = "hidden";
+								}
+							collection = document.getElementsByClassName("hiddenScratch")
+							for (let i = 0; i < collection.length; i++)
+								{
+									collection[i].style.visibility = "visible";
+								}
+						}
+					else if (selectedValue == "experienced" )
+						{
+							collection = document.getElementsByClassName("hiddenScratch")
+							for (let i = 0; i < collection.length; i++)
+								{
+									collection[i].style.visibility = "hidden";
+								}
+							collection = document.getElementsByClassName("hiddenArcade")
+							for (let i = 0; i < collection.length; i++)
+								{
+									collection[i].style.visibility = "visible";
+								}
+						}
+				}
+		</script>
+	</head>
+	<body>
+		<header><h1><a href=index.html>Greenfield CoderDojo</a></h1></header>
+		<nav>
+			<ul>
+				<li><a href=index.html>Home</a></li>
+				<li><a href=events.html>Events</a>
+					<ul>
+						<li><a href="registration.html">Registration</a></li>
+						<li><a href="eventschedule.html">Event Schedule</a></li>
+						<li><a href="covid19.html">COVID-19 Safety Measures</a></li>
+						<li><a href="awards.html">Awards</a></li>
+						<li><a href="eventfaqs.html">Event FAQs</a></li>
+						<li><a href="survey.html">Survey</a></li>
+						<li><a href="refer.html">Refer a Friend</a></li>
+					</ul>
+				</li>
+				<li><a href=whoandwhat.html>Who and What</a></li>
+				<li><a href=showcase.html>Showcase</a>
+					<ul>
+						<li><a href="shared.html">Our Shared Projects</a></li>
+						<li><a href="howtoshare.html">How to Share</a></li>
+						<li><a href="resources.html">Project Resources</a></li>
+					</ul>
+				</li>
+				<li><a href=blog.html>Blog</a></li>
+				<li><a href=aboutus.html>About Us</a></li>
+				<li><a href=contactus.html>Contact Us</a></li>
+			</ul>
+		</nav>
+		<div id="wrapper">
+		<div id="surveyhero">
+		</div>
+		<main>
+			<h2>Events::Survey</h2>
+				<p>Required fields are marked with an asterisk*</p>			
+			<form name="survey" method="post" id="survey" 
+				action="https://webdevbasics.net/scripts/pacific.php"
+				onsubmit="alert('Thank you for submitting our survey!');">
+				
+				<label for="eventDate">*Event Date:</label>
+				<input type="date" name="eventDate" id="eventDate" required>
+				
+				<label class="form-label" for="selectBox">*In which coding group do you participate?:</label>
+				<select size="2" name="selectBox" id="selectBox" required onchange="optionalQuestion()">
+					<option value="some">Coders with some or no experience coding</option>
+					<option value="experienced">Experienced coders</option>
+				</select>
+
+				<label class="form-label" for="fun1">*How much fun did you have today?</label><br>
+				<input type="radio" name="fun" id="fun1" value="nofun" required>No fun<br>
+				<input type="radio" name="fun" id="fun2" value="littlefun">A little fun<br>
+				<input type="radio" name="fun" id="fun3" value="lotoffun">A lot of fun<br>
+				
+				<label class="form-label" for="challenge1">*How much were you challenged today?</label><br>
+				<input type="radio" name="challenge" id="challenge1" value="not-at-all" required>Not at all<br>
+				<input type="radio" name="challenge" id="challenge2" value="a-little">A little<br>
+				<input type="radio" name="challenge" id="challenge3" value="a-lot">A lot<br>
+				
+				<label class="form-label" for="microbit1">*Would you like to continue to use micro:bits?</label><br>
+				<input type="radio" name="microbit" id="microbit1" value="yes-microbit" required>Yes<br>
+				<input type="radio" name="microbit" id="microbit2" value="no-microbit">No<br>
+				<input type="radio" name="microbit" id="microbit3" value="maybe-microbit">Maybe<br>
+				
+				<label class="hiddenScratch" for="scratch1">This questions is only for coders in the some or no experience 
+					group: Would you like to continue using Scratch?</label><br>
+				<input class="hiddenScratch" type="radio" name="scratch" id="scratch1" value="yes-scratch"><span class="hiddenScratch">Yes</span>
+				<input class="hiddenScratch" type="radio" name="scratch" id="scratch2" value="no-scratch"><span class="hiddenScratch">No</span>
+				<input class="hiddenScratch" type="radio" name="scratch" id="scratch3" value="maybe-scratch"><span class="hiddenScratch">Maybe</span>
+				
+				<label class="hiddenArcade" for="arcade1">This questions is only for coders in the experienced group: Would 
+					you like to continue using Arcade?</label><br>
+				<input class="hiddenArcade" type="radio" name="arcade" id="arcade1" value="yes-arcade"><span class="hiddenArcade">Yes</span>
+				<input class="hiddenArcade" type="radio" name="arcade" id="arcade2" value="no-arcade"><span class="hiddenArcade">No</span>
+				<input class="hiddenArcade" type="radio" name="arcade" id="arcade3" value="maybe-arcade"><span class="hiddenArcade">Maybe</span>
+
+				<label class="form-label" for="feedback">If you answered no to the previous question, please 
+					describe what you would rather do instead:</label>
+				<textarea name="feedback" id="feedback" rows="2" cols="20"></textarea>
+				
+				<input type="submit" name="mySubmit" id="mySubmit" value="Submit">
+			</form>
+		</main>
+		<footer>
+			Greenfield CoderDojo<br>
+			<a href="mailto:greenfield@coderdojo.com">greenfield@coderdojo.com</a>
+		</footer>
+		</div>
+	</body>
+</html>
